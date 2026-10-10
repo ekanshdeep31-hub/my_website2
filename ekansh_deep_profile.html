@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ekansh Deep — Professional Profile</title>
+<style>
+  :root{
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --ink:#17171c;
+    --muted:#777985;
+    --line:#ececf1;
+    --pink:#ff3b72;
+    --pink2:#ff5f7f;
+    --purple:#8b5cf6;
+    --green:#20c997;
+    --blue:#3b82f6;
+    --shadow:0 22px 55px rgba(24,24,40,.15);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(135deg,#fafafd,#f1f3f8);color:var(--ink)}
+  body{display:flex;justify-content:center}
+  button,a{font:inherit}
+  a{text-decoration:none;color:inherit}
+  .app{width:min(100%,560px);min-height:100vh;padding:18px 14px 30px;position:relative}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:3px 6px 15px}
+  .brand{font-weight:900;font-size:26px;letter-spacing:-1.5px;background:linear-gradient(90deg,#ff2d68,#ff6a78,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .top-actions{display:flex;gap:8px}
+  .icon-btn{border:0;background:#fff;width:40px;height:40px;border-radius:50%;box-shadow:0 7px 20px rgba(0,0,0,.07);cursor:pointer;color:#565762}
+  .icon-btn:hover{transform:translateY(-1px)}
+  .deck{position:relative;height:720px;max-height:calc(100vh - 180px);min-height:570px}
+  .card{
+    position:absolute;inset:0;background:var(--card);border-radius:27px;overflow:hidden;
+    box-shadow:var(--shadow);transition:transform .35s ease,opacity .35s ease;
+    user-select:none;touch-action:none;
+  }
+  .card.swipe-left{transform:translateX(-125%) rotate(-18deg);opacity:0}
+  .card.swipe-right{transform:translateX(125%) rotate(18deg);opacity:0}
+  .hero{
+    height:49%;min-height:280px;position:relative;display:flex;align-items:flex-end;padding:22px;
+    background:
+      radial-gradient(circle at 18% 20%,rgba(255,255,255,.55),transparent 25%),
+      linear-gradient(145deg,#263746 0%,#355267 45%,#15232d 100%);
+    color:white;overflow:hidden;
+  }
+  .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(1px);opacity:.22}
+  .hero:before{width:240px;height:240px;background:#ff3b72;right:-85px;top:-85px}
+  .hero:after{width:190px;height:190px;background:#8b5cf6;left:-80px;bottom:-95px}
+  .avatar{
+    width:132px;height:132px;border-radius:50%;border:5px solid rgba(255,255,255,.88);
+    background:linear-gradient(145deg,#f4f0ff,#dce6f2);display:grid;place-items:center;
+    color:#263746;font-size:50px;font-weight:900;box-shadow:0 15px 35px rgba(0,0,0,.25);position:relative;z-index:2
+  }
+  .avatar span{transform:translateY(-2px)}
+  .verified{position:absolute;right:-1px;bottom:4px;width:30px;height:30px;border-radius:50%;background:#3b82f6;border:3px solid white;display:grid;place-items:center;font-size:14px}
+  .hero-copy{position:relative;z-index:2;margin-left:16px;flex:1}
+  .hero-copy h1{margin:0;font-size:31px;letter-spacing:-1px}
+  .hero-copy .role{margin-top:4px;font-weight:700;font-size:15px}
+  .hero-copy .location{margin-top:6px;color:rgba(255,255,255,.8);font-size:13px}
+  .badge{display:inline-flex;align-items:center;gap:5px;margin-top:11px;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);font-size:11px;font-weight:800}
+  .content{padding:20px 21px 18px;height:51%;overflow:auto}
+  .headline{font-size:16px;line-height:1.5;color:#3d3e48;margin:0 0 16px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+  .chip{padding:7px 10px;background:#f5f5f8;border:1px solid #ededf2;border-radius:999px;font-size:11px;font-weight:700;color:#4f505a}
+  .section-title{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;font-weight:900;color:#999aa3;margin:16px 0 10px}
+  .timeline{display:grid;gap:10px}
+  .job{display:grid;grid-template-columns:9px 1fr;gap:10px}
+  .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--purple));margin-top:5px;box-shadow:0 0 0 4px #fff0f4}
+  .job b{font-size:13px}
+  .job span{display:block;font-size:11px;color:var(--muted);margin-top:2px;line-height:1.35}
+  .education{padding:11px 12px;background:#fafafd;border:1px solid var(--line);border-radius:14px;font-size:12px}
+  .education b{display:block;font-size:13px}
+  .education span{color:var(--muted);line-height:1.45}
+  .actions{display:flex;justify-content:center;align-items:center;gap:14px;padding:14px 0 5px}
+  .action{width:57px;height:57px;border-radius:50%;border:0;background:#fff;box-shadow:0 10px 25px rgba(0,0,0,.1);cursor:pointer;display:grid;place-items:center;font-size:24px;transition:.18s}
+  .action:hover{transform:scale(1.08)}
+  .action.small{width:47px;height:47px;font-size:19px}
+  .action.nope{color:#ff385c;border:1px solid #ffd9e0}
+  .action.like{color:#16a875;border:1px solid #d1f4e7}
+  .action.star{color:#7c4dff;border:1px solid #e4dbff}
+  .action.info{color:#3b82f6;border:1px solid #dbe9ff}
+  .toast{
+    position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);opacity:0;pointer-events:none;
+    background:#17171c;color:white;padding:11px 15px;border-radius:999px;font-size:12px;font-weight:700;transition:.25s;z-index:10;
+    box-shadow:0 10px 30px rgba(0,0,0,.2)
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+  .nav{display:flex;justify-content:center;gap:10px;margin-top:10px}
+  .nav button{border:0;background:transparent;color:#a0a1aa;font-size:11px;font-weight:800;cursor:pointer;padding:8px 12px}
+  .nav button.active{color:#ff3b72}
+  .details{
+    display:none;position:absolute;inset:0;background:white;border-radius:27px;box-shadow:var(--shadow);padding:28px;overflow:auto;z-index:5
+  }
+  .details.open{display:block}
+  .details h2{margin:0 0 5px;font-size:28px}
+  .details .sub{color:var(--muted);font-size:13px;margin-bottom:20px}
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .detail-box{padding:14px;border:1px solid var(--line);border-radius:16px;background:#fafafd}
+  .detail-box strong{display:block;font-size:11px;color:#9a9aa3;text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px}
+  .detail-box span{font-size:13px;font-weight:700;line-height:1.4}
+  .close{border:0;background:#f4f4f7;border-radius:50%;width:38px;height:38px;float:right;cursor:pointer}
+  .links{display:grid;gap:9px;margin-top:16px}
+  .link{padding:13px 14px;border:1px solid var(--line);border-radius:14px;font-size:13px;font-weight:700}
+  @media(max-width:430px){
+    .deck{height:650px;min-height:540px}
+    .hero{padding:17px}.avatar{width:108px;height:108px;font-size:40px}.hero-copy h1{font-size:27px}
+    .content{padding:17px}.action{width:54px;height:54px}
+  }
+</style>
+</head>
+<body>
+<main class="app">
+  <header class="topbar">
+    <div class="brand">tinder<span style="font-size:14px">×</span>career</div>
+    <div class="top-actions">
+      <button class="icon-btn" onclick="showToast('Profile ready to connect ✨')" aria-label="notifications">♡</button>
+      <button class="icon-btn" onclick="toggleDetails()" aria-label="profile details">☰</button>
+    </div>
+  </header>
+
+  <section class="deck" id="deck">
+    <article class="card" id="profileCard">
+      <div class="hero">
+        <div class="avatar"><span>ED</span><i class="verified">✓</i></div>
+        <div class="hero-copy">
+          <h1>Ekansh Deep</h1>
+          <div class="role">Senior Associate · Scrum Master</div>
+          <div class="location">📍 Bengaluru, Karnataka, India</div>
+          <div class="badge">✓ PSM I Certified · SAFe 6.0</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <p class="headline">
+          Agile delivery professional with experience across KPMG, Paytm, PayPal, Amazon and Snapdeal.
+          I bring Scrum, stakeholder collaboration and delivery leadership together.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Scrum Master</span>
+          <span class="chip">Agile Delivery</span>
+          <span class="chip">Jira</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Python</span>
+          <span class="chip">Microsoft Excel</span>
+        </div>
+
+        <div class="section-title">Career journey</div>
+        <div class="timeline">
+          <div class="job"><div class="dot"></div><div><b>KPMG — Senior Associate</b><span>Dec 2023 – Present · Bengaluru</span></div></div>
+          <div class="job"><div class="dot"></div><div><b>Paytm — Business Analyst / Scrum Master</b><span>May 2021 – Nov 2023 · Bengaluru</span></div></div>
+          <div class="job"><div class="dot"></div><div><b>PayPal — Scrum Master</b><span>Feb 2018 – Apr 2021</span></div></div>
+          <div class="job"><div class="dot"></div><div><b>Amazon — Team Lead</b><span>Apr 2016 – Feb 2018 · Bengaluru</span></div></div>
+          <div class="job"><div class="dot"></div><div><b>Snapdeal — QA Engineer</b><span>Jan 2015 – Mar 2016 · Greater Delhi Area</span></div></div>
+        </div>
+
+        <div class="section-title">Education</div>
+        <div class="education">
+          <b>Anand Engineering College (SGI)</b>
+          <span>Bachelor of Technology (B.Tech.), Mechanical Engineering · 2010 – 2014</span>
+        </div>
+      </div>
+    </article>
+
+    <section class="details" id="details">
+      <button class="close" onclick="toggleDetails()">✕</button>
+      <h2>About Ekansh</h2>
+      <div class="sub">A career profile designed like a swipe card.</div>
+      <div class="detail-grid">
+        <div class="detail-box"><strong>Current</strong><span>KPMG · Senior Associate</span></div>
+        <div class="detail-box"><strong>Location</strong><span>Bengaluru, India</span></div>
+        <div class="detail-box"><strong>Certification</strong><span>PSM I</span></div>
+        <div class="detail-box"><strong>Framework</strong><span>SAFe 6.0</span></div>
+        <div class="detail-box"><strong>Skills</strong><span>Excel · SQL · Python</span></div>
+        <div class="detail-box"><strong>Education</strong><span>B.Tech. Mechanical Engineering</span></div>
+      </div>
+      <div class="section-title">Certifications</div>
+      <div class="chips">
+        <span class="chip">Professional Scrum Master™ I (PSM I)</span>
+        <span class="chip">Jira Fundamentals Badge</span>
+      </div>
+      <div class="section-title">Connect</div>
+      <div class="links">
+        <a class="link" href="mailto:ekanshdeep25@gmail.com">✉️ ekanshdeep25@gmail.com</a>
+        <a class="link" href="https://www.linkedin.com/in/ekansh-deep-121b05a5" target="_blank" rel="noopener">in  LinkedIn profile ↗</a>
+      </div>
+    </section>
+  </section>
+
+  <div class="actions">
+    <button class="action small nope" onclick="swipe('left')" title="Pass">✕</button>
+    <button class="action star" onclick="showToast('Career journey bookmarked ⭐')" title="Super like">★</button>
+    <button class="action info" onclick="toggleDetails()" title="More info">i</button>
+    <button class="action like" onclick="swipe('right')" title="Connect">♥</button>
+  </div>
+
+  <nav class="nav">
+    <button class="active" onclick="resetCard()">PROFILE</button>
+    <button onclick="toggleDetails()">ABOUT</button>
+    <button onclick="showToast('Email copied — ready to connect!')">CONNECT</button>
+  </nav>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const card = document.getElementById('profileCard');
+  const toast = document.getElementById('toast');
+  let toastTimer;
+
+  function showToast(message){
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>toast.classList.remove('show'), 1900);
+  }
+
+  function swipe(direction){
+    card.classList.remove('swipe-left','swipe-right');
+    void card.offsetWidth;
+    card.classList.add(direction === 'left' ? 'swipe-left' : 'swipe-right');
+    showToast(direction === 'right' ? 'Let’s connect! ♥' : 'Maybe next time 🙂');
+    setTimeout(resetCard, 650);
+  }
+
+  function resetCard(){
+    card.classList.remove('swipe-left','swipe-right');
+  }
+
+  function toggleDetails(){
+    document.getElementById('details').classList.toggle('open');
+  }
+
+  let startX = 0, currentX = 0, dragging = false;
+  card.addEventListener('pointerdown', e=>{
+    dragging = true; startX = e.clientX; currentX = e.clientX;
+    card.setPointerCapture(e.pointerId);
+    card.style.transition='none';
+  });
+  card.addEventListener('pointermove', e=>{
+    if(!dragging) return;
+    currentX = e.clientX;
+    const dx = currentX - startX;
+    card.style.transform = `translateX(${dx}px) rotate(${dx/18}deg)`;
+    card.style.opacity = String(Math.max(.72, 1-Math.abs(dx)/500));
+  });
+  card.addEventListener('pointerup', ()=>{
+    if(!dragging) return;
+    dragging=false;
+    card.style.transition='';
+    const dx=currentX-startX;
+    card.style.opacity='';
+    if(Math.abs(dx)>100) swipe(dx>0?'right':'left');
+    else card.style.transform='';
+  });
+</script>
+</body>
+</html>
