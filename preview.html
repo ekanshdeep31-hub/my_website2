@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ekansh Deep — Senior Associate at KPMG, Scrum Master, and technology professional.">
+<title>Ekansh Deep — Portfolio</title>
+<style>
+  :root{
+    --bg:#f5f5f7;
+    --card:#ffffff;
+    --text:#1d1d1f;
+    --muted:#6e6e73;
+    --line:#d2d2d7;
+    --blue:#0071e3;
+    --dark:#161617;
+    --glass:rgba(255,255,255,.72);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .nav{
+    position:sticky;top:0;z-index:20;
+    height:52px;
+    background:rgba(250,250,252,.78);
+    backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid rgba(0,0,0,.08);
+  }
+  .nav-inner{
+    max-width:1100px;margin:auto;height:100%;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 22px;
+  }
+  .brand{font-size:18px;font-weight:600;letter-spacing:-.02em}
+  .nav-links{display:flex;gap:26px;font-size:13px;color:#424245}
+  .nav-links a:hover{color:var(--blue)}
+  .hero{
+    min-height:calc(100vh - 52px);
+    display:flex;align-items:center;
+    max-width:1100px;margin:auto;padding:90px 22px 110px;
+  }
+  .hero-grid{
+    width:100%;display:grid;grid-template-columns:1.35fr .65fr;gap:60px;align-items:center;
+  }
+  .eyebrow{
+    font-size:17px;font-weight:600;color:var(--blue);margin-bottom:14px;
+  }
+  h1{
+    font-size:clamp(54px,8vw,92px);
+    line-height:.98;letter-spacing:-.065em;margin:0 0 28px;font-weight:700;
+  }
+  .hero p{
+    max-width:720px;font-size:26px;line-height:1.22;letter-spacing:-.025em;color:#424245;margin:0 0 32px;
+  }
+  .location{font-size:15px;color:var(--muted);margin-bottom:30px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .button{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:12px 20px;border-radius:999px;font-size:15px;font-weight:500;
+    background:var(--blue);color:white;transition:.2s transform,.2s background;
+  }
+  .button:hover{background:#0077ed;transform:translateY(-1px)}
+  .button.secondary{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+  .hero-card{
+    background:linear-gradient(145deg,#ffffff,#e9e9ed);
+    border-radius:34px;aspect-ratio:1/1;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 25px 70px rgba(0,0,0,.12);
+    position:relative;overflow:hidden;
+  }
+  .hero-card:before{
+    content:"";position:absolute;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#fff 0,#d9d9df 42%,#b9bac0 100%);
+    filter:blur(.2px);
+  }
+  .initials{
+    position:relative;width:150px;height:150px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:#1d1d1f;color:#fff;font-size:48px;font-weight:600;letter-spacing:-.06em;
+    box-shadow:0 18px 45px rgba(0,0,0,.24);
+  }
+  section{padding:100px 22px}
+  .section-inner{max-width:1100px;margin:auto}
+  .section-kicker{font-size:16px;color:var(--blue);font-weight:600;margin-bottom:10px}
+  h2{font-size:54px;letter-spacing:-.055em;line-height:1.03;margin:0 0 44px}
+  .intro{
+    font-size:25px;line-height:1.28;letter-spacing:-.025em;max-width:850px;color:#424245;margin-bottom:50px;
+  }
+  .dark{background:var(--dark);color:#f5f5f7}
+  .dark .intro,.dark .muted{color:#a1a1a6}
+  .timeline{position:relative;margin-top:25px}
+  .timeline:before{
+    content:"";position:absolute;left:9px;top:5px;bottom:5px;width:2px;background:#d2d2d7;
+  }
+  .dark .timeline:before{background:#3a3a3c}
+  .job{position:relative;padding:0 0 52px 44px}
+  .dot{
+    position:absolute;left:0;top:5px;width:20px;height:20px;border-radius:50%;
+    background:var(--bg);border:5px solid var(--dark);
+  }
+  .dark .dot{background:var(--dark);border-color:#f5f5f7}
+  .job h3{font-size:29px;letter-spacing:-.025em;margin:0 0 5px}
+  .role{font-size:18px;font-weight:500;margin-bottom:5px}
+  .dates{font-size:15px;color:var(--muted)}
+  .dark .dates{color:#a1a1a6}
+  .skills{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  }
+  .skill-card{
+    background:var(--card);border-radius:26px;padding:30px;min-height:180px;
+    border:1px solid rgba(0,0,0,.06);transition:.25s transform,.25s box-shadow;
+  }
+  .skill-card:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(0,0,0,.09)}
+  .skill-number{font-size:14px;color:var(--muted);margin-bottom:35px}
+  .skill-card h3{font-size:24px;letter-spacing:-.025em;margin:0}
+  .cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .cert{
+    padding:34px;border-radius:26px;background:#1f1f21;border:1px solid #3a3a3c;
+  }
+  .cert span{font-size:13px;color:#a1a1a6;text-transform:uppercase;letter-spacing:.08em}
+  .cert h3{font-size:24px;line-height:1.2;margin:14px 0 0}
+  .education{
+    background:#fff;border-radius:32px;padding:42px;display:grid;
+    grid-template-columns:1fr auto;gap:30px;align-items:center;
+  }
+  .education h3{font-size:30px;letter-spacing:-.03em;margin:0 0 8px}
+  .education p{margin:0;color:var(--muted);font-size:17px}
+  .degree{
+    font-size:50px;font-weight:600;letter-spacing:-.06em;color:#d2d2d7;
+  }
+  .contact-box{
+    background:#fff;border-radius:34px;padding:55px;
+    display:flex;align-items:center;justify-content:space-between;gap:30px;
+  }
+  .contact-box h2{margin:0;font-size:46px}
+  .contact-box p{color:var(--muted);margin:12px 0 0}
+  footer{padding:32px 22px;background:#f5f5f7;color:#6e6e73;font-size:13px}
+  .footer-inner{max-width:1100px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  @media(max-width:800px){
+    .nav-links{gap:14px;font-size:12px}
+    .hero{padding-top:65px}
+    .hero-grid{grid-template-columns:1fr;gap:45px}
+    .hero-card{max-width:360px;width:100%;margin:auto}
+    .hero p{font-size:22px}
+    h2{font-size:43px}
+    .skills{grid-template-columns:1fr}
+    .cert-grid{grid-template-columns:1fr}
+    .education{grid-template-columns:1fr}
+    .degree{font-size:36px}
+    .contact-box{padding:38px;display:block}
+    .contact-box .button{margin-top:24px}
+  }
+  @media(max-width:520px){
+    .nav-links a:nth-child(2){display:none}
+    h1{font-size:58px}
+    section{padding:75px 18px}
+    .hero{padding-left:18px;padding-right:18px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">Ekansh Deep</a>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Scrum Master · Technology Professional</div>
+        <h1>Ekansh<br>Deep.</h1>
+        <p>KPMG | Ex Paytm, PayPal, Amazon · PSM I Certified · SAFe 6.0 Certified</p>
+        <div class="location">Bengaluru, Karnataka, India</div>
+        <div class="actions">
+          <a class="button" href="mailto:ekanshdeep25@gmail.com">Get in touch</a>
+          <a class="button secondary" href="https://www.linkedin.com/in/ekansh-deep-121b05a5" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="Ekansh Deep initials">
+        <div class="initials">ED</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="dark">
+    <div class="section-inner">
+      <div class="section-kicker">Career</div>
+      <h2>Experience that<br>moves forward.</h2>
+      <p class="intro">A career spanning Scrum, business analysis, team leadership and quality engineering across leading technology and fintech organizations.</p>
+
+      <div class="timeline">
+        <article class="job">
+          <div class="dot"></div>
+          <h3>KPMG</h3>
+          <div class="role">Senior Associate</div>
+          <div class="dates">December 2023 – Present · Bengaluru, Karnataka, India</div>
+        </article>
+
+        <article class="job">
+          <div class="dot"></div>
+          <h3>Paytm</h3>
+          <div class="role">Business Analyst / Scrum Master</div>
+          <div class="dates">May 2021 – November 2023 · Bengaluru, Karnataka, India</div>
+        </article>
+
+        <article class="job">
+          <div class="dot"></div>
+          <h3>PayPal</h3>
+          <div class="role">Scrum Master</div>
+          <div class="dates">February 2018 – April 2021</div>
+        </article>
+
+        <article class="job">
+          <div class="dot"></div>
+          <h3>Amazon</h3>
+          <div class="role">Team Lead</div>
+          <div class="dates">April 2016 – February 2018 · Bengaluru, Karnataka, India</div>
+        </article>
+
+        <article class="job" style="padding-bottom:0">
+          <div class="dot"></div>
+          <h3>Snapdeal</h3>
+          <div class="role">QA Engineer</div>
+          <div class="dates">January 2015 – March 2016 · Greater Delhi Area</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-kicker">Capabilities</div>
+      <h2>Tools for getting<br>things done.</h2>
+      <div class="skills">
+        <div class="skill-card">
+          <div class="skill-number">01</div>
+          <h3>Microsoft Excel</h3>
+        </div>
+        <div class="skill-card">
+          <div class="skill-number">02</div>
+          <h3>SQL</h3>
+        </div>
+        <div class="skill-card">
+          <div class="skill-number">03</div>
+          <h3>Python<br>(Programming Language)</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="section-inner">
+      <div class="section-kicker">Credentials</div>
+      <h2>Certified to<br>lead with agility.</h2>
+      <div class="cert-grid">
+        <div class="cert">
+          <span>Certification</span>
+          <h3>Professional Scrum Master™ I (PSM I)</h3>
+        </div>
+        <div class="cert">
+          <span>Badge</span>
+          <h3>Jira Fundamentals Badge</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-inner">
+      <div class="section-kicker">Education</div>
+      <h2>Built on a<br>technical foundation.</h2>
+      <div class="education">
+        <div>
+          <h3>Anand Engineering College (SGI)</h3>
+          <p>Bachelor of Technology (B.Tech.), Mechanical Engineering · 2010 – 2014</p>
+        </div>
+        <div class="degree">B.Tech.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:30px">
+    <div class="section-inner">
+      <div class="contact-box">
+        <div>
+          <h2>Let's connect.</h2>
+          <p>Based in Bengaluru, Karnataka, India.</p>
+        </div>
+        <a class="button" href="mailto:ekanshdeep25@gmail.com">ekanshdeep25@gmail.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Ekansh Deep</span>
+    <a href="https://www.linkedin.com/in/ekansh-deep-121b05a5" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </div>
+</footer>
+
+</body>
+</html>
